@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: myLab
-  name: myLab
+    app: my-lab
+  name: my-lab
 spec:
-  replicas: 20
+  replicas: 10
   selector:
     matchLabels:
-      app: myLab
+      app: my-lab
   template:
     metadata:
       labels:
-        app: myLab
+        app: my-lab
     spec:
       containers:
-      - image: busybox
-        name: busybox
+      - image: httpd
+        name: httpd
   strategy:
     type: RollingUpdate
     rollingUpdate:
