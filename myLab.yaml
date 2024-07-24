@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: myLab
+  name: myLab
+spec:
+  replicas: 20
+  selector:
+    matchLabels:
+      app: myLab
+  template:
+    metadata:
+      labels:
+        app: myLab
+    spec:
+      containers:
+      - image: busybox
+        name: busybox
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
