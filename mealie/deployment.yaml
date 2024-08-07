@@ -16,14 +16,14 @@ spec:
         app: mealie
     spec:
       volumes:
-        - name: scratch
-          emptyDir:
-            sizeLimit: 500Mi
+        - name: data
+          persistentVolumeClaim:
+            claimName: mealie-data
       containers:
         - image: ghcr.io/mealie-recipes/mealie:v1.10.2
           name: mealie
           ports: 
             - containerPort: 9000
           volumeMounts:
-            - mountPath: /scratch
-              name: scratch
+            - mountPath: /app/data
+              name: data
